@@ -1,0 +1,61 @@
+# See https://docs.docker.com/engine/reference/builder/#dockerignore-file for more about ignoring files.
+
+# Ignore git directory
+/.git/
+/.gitignore
+
+# Ignore all environment files
+/.env*
+/appsettings.Development.json
+
+# Ignore build outputs
+/bin/
+/obj/
+/out/
+/publish/
+
+# Ignore Visual Studio files
+/.vs/
+/.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore test results
+/TestResults/
+/coverage/
+*.trx
+*.coverage
+*.coveragexml
+
+# Ignore logs
+/logs/
+*.log
+
+# Ignore temporary files
+/tmp/
+*.tmp
+*.temp
+
+# Ignore Docker-related files
+/.dockerignore
+/Dockerfile*
+/docker-compose*.yml
+
+# Ignore CI/CD files
+/.github/
+/.gitlab-ci.yml
+/.azure-pipelines.yml
+
+# Ignore IDE files
+/.idea/
+/.vs/
+*.swp
+*.swo
+*~
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
