@@ -1,0 +1,82 @@
+@model List<Challenge.Models.Store>
+@{
+    ViewData["Title"] = "Stores and Transactions";
+}
+
+<div class="stores-container">
+  <div class="stores-header" style="text-align: center;">
+    <h1>Stores and Transactions</h1>
+    <p class="subtitle">List of all stores with their transactions and total balance</p>
+    <div style="margin: 24px 0;">
+      <a asp-controller="CnabFiles" asp-action="New" class="upload-link" style="display: inline-block; padding: 12px 24px; background: #7c5cff; color: #fff; border-radius: 8px; font-weight: bold; text-decoration: none; font-size: 1.1em;">Upload new file</a>
+    </div>
+  </div>
+
+  @if (TempData["SuccessMessage"] != null)
+  {
+    <div style="background: #c6f6d5; border: 1px solid #22543d; border-radius: 8px; padding: 16px; margin-bottom: 24px; color: #22543d;">
+      @TempData["SuccessMessage"]
+    </div>
+  }
+
+  @if (Model == null || !Model.Any())
+  {
+    <div class="no-stores" style="margin: 32px auto; text-align: center; color: #666; font-size: 1.2em;">
+      <strong>No data to display.</strong><br>
+      Import a file before viewing stores.
+    </div>
+  }
+  else
+  {
+    <div class="stores-list">
+      @foreach (var store in Model)
+      {
+        <div class="store-card">
+          <div class="store-header">
+            <h2>@store.Name</h2>
+            <div class="store-info">
+              <span class="owner">Owner: @store.Owner</span>
+              <span class="balance @(store.Balance >= 0 ? "positive" : "negative")">
+                Balance: R$ @store.Balance.ToString("N2")
+              </span>
+            </div>
+          </div>
+
+          <div class="transactions-list">
+            <h3>Transactions (@store.Transactions.Count)</h3>
+            <table class="transactions-table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Amount</th>
+                  <th>CPF</th>
+                  <th>Card</th>
+                  <th>Nature</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach (var transaction in store.Transactions.OrderByDescending(t => t.Date).ThenByDescending(t => t.Time))
+                {
+                  <tr>
+                    <td>@transaction.TypeDescription</td>
+                    <td>@transaction.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@transaction.Time.ToString("HH:mm:ss")</td>
+                    <td class="@(transaction.IsEntrada ? "entrada" : "saida")">
+                      @transaction.Signal R$ @transaction.Amount.ToString("N2")
+                    </td>
+                    <td>@transaction.Cpf</td>
+                    <td>@transaction.Card</td>
+                    <td>@transaction.Nature</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+

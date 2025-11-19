@@ -1,31 +1,374 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+  }
+  
+  /* Container principal */
+  .upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 40px);
+  }
+  
+  /* Card do formulário */
+  .upload-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  .upload-card h1 {
+    font-size: 28px;
+    color: #2d3748;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  
+  .subtitle {
+    color: #718096;
+    text-align: center;
+    margin-bottom: 32px;
     font-size: 16px;
   }
-}
+  
+  /* Mensagens de erro */
+  .error-messages {
+    background: #fed7d7;
+    border: 1px solid #fc8181;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .error-messages ul {
+    list-style: none;
+  }
+  
+  .error-messages li {
+    color: #c53030;
+    font-size: 14px;
+  }
+  
+  /* Input de arquivo customizado */
+  .file-input-wrapper {
+    position: relative;
+    margin-bottom: 24px;
+  }
+  
+  .file-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  .file-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    border: 3px dashed #cbd5e0;
+    border-radius: 12px;
+    background: #f7fafc;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .file-label:hover {
+    border-color: #667eea;
+    background: #edf2f7;
+  }
+  
+  .file-input:focus + .file-label,
+  .file-label:has(input:focus) {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+  }
+  
+  .file-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+  
+  .file-text {
+    font-size: 18px;
+    color: #2d3748;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  
+  .file-hint {
+    font-size: 14px;
+    color: #718096;
+  }
+  
+  /* Botão de submit */
+  .form-actions {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .submit-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  }
+  
+  .submit-button:active {
+    transform: translateY(0);
+  }
+  
+  /* Responsivo */
+  @media (max-width: 640px) {
+    .upload-card {
+      padding: 24px;
+    }
+  
+    .file-label {
+      padding: 40px 20px;
+    }
+  
+    .upload-card h1 {
+      font-size: 24px;
+    }
+  }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
+  /* Stores/Listagem de Lojas */
+  .stores-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
+  .stores-header {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
 
-body {
-  margin-bottom: 60px;
-}
+  .stores-header h1 {
+    color: #2d3748;
+    margin-bottom: 8px;
+  }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
-}
+  .subtitle {
+    color: #718096;
+    margin-bottom: 20px;
+  }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
-}
+  .upload-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: transform 0.2s;
+  }
+
+  .upload-link:hover {
+    transform: translateY(-2px);
+  }
+
+  .stores-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .store-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .store-header {
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+  }
+
+  .store-header h2 {
+    color: #2d3748;
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .store-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .owner {
+    color: #718096;
+    font-size: 14px;
+  }
+
+  .balance {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 6px;
+  }
+
+  .balance.positive {
+    color: #22543d;
+    background: #c6f6d5;
+  }
+
+  .balance.negative {
+    color: #742a2a;
+    background: #fed7d7;
+  }
+
+  .transactions-list h3 {
+    color: #2d3748;
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .transactions-table thead {
+    background: #f7fafc;
+    border-bottom: 2px solid #e2e8f0;
+  }
+
+  .transactions-table th {
+    padding: 12px;
+    text-align: left;
+    color: #4a5568;
+    font-weight: 600;
+  }
+
+  .transactions-table td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #2d3748;
+  }
+
+  .transactions-table tbody tr:hover {
+    background: #f7fafc;
+  }
+
+  .transactions-table .entrada {
+    color: #22543d;
+    font-weight: 500;
+  }
+
+  .transactions-table .saida {
+    color: #742a2a;
+    font-weight: 500;
+  }
+
+  .no-stores {
+    background: white;
+    border-radius: 12px;
+    padding: 60px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .no-stores p {
+    color: #718096;
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+
+  .upload-button {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s;
+  }
+
+  .upload-button:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Navigation */
+  nav {
+    background: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    margin-bottom: 24px;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+
+  /* Responsivo - Stores */
+  @media (max-width: 768px) {
+    .transactions-table {
+      font-size: 12px;
+    }
+
+    .transactions-table th,
+    .transactions-table td {
+      padding: 8px;
+    }
+
+    .store-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }

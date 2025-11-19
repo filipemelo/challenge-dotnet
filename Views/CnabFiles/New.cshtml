@@ -1,0 +1,48 @@
+@{
+    ViewData["Title"] = "CNAB File Upload";
+}
+
+<main class="upload-container">
+  <div class="upload-card">
+    <h1>CNAB File Upload</h1>
+    <p class="subtitle">Select the CNAB file to import transactions</p>
+
+    <form asp-controller="CnabFiles" asp-action="Create" method="post" enctype="multipart/form-data" class="upload-form">
+      @if (!ViewData.ModelState.IsValid)
+      {
+        <div class="error-messages">
+          <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+              <li>@error.ErrorMessage</li>
+            }
+          </ul>
+        </div>
+      }
+
+      <div class="file-input-wrapper">
+        <label for="file" class="file-label" style="position: relative; width: 100%;">
+          <input type="file" 
+                 name="file" 
+                 id="file"
+                 accept=".txt" 
+                 class="file-input"
+                 style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 2;" 
+                 required />
+          <span class="file-icon">📄</span>
+          <span class="file-text">Click to select or drag the file here</span>
+          <span class="file-hint">.txt files only</span>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="submit-button">Upload File</button>
+      </div>
+    </form>
+  </div>
+</main>
+
+@section Scripts {
+    <script src="~/js/upload.js" asp-append-version="true"></script>
+}
+

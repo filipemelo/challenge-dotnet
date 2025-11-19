@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Configuration";
+}
+
+<h1 style="text-align:center;">Configuration</h1>
+
+<div style="max-width:400px;margin:32px auto;padding:24px;border:1px solid #eee;border-radius:8px;background:#fafbfc;">
+  <form asp-controller="Configuration" asp-action="ResetDatabase" method="post">
+    @Html.AntiForgeryToken()
+    <p style="margin-bottom:16px;">
+      <label for="confirmationText">Type <strong>CONFIRM</strong> to reset the database:</label><br>
+      <input type="text" name="confirmationText" id="confirmationText" required style="width:100%;padding:8px;margin-top:8px;" />
+    </p>
+    <button type="submit" onclick="return confirm('Are you sure? This action is irreversible!');" style="background:#c00;color:#fff;padding:10px 20px;border:none;border-radius:4px;cursor:pointer;font-weight:bold;">Reset Database</button>
+  </form>
+
+  @if (TempData["SuccessMessage"] != null)
+  {
+    <p style="color: green; margin-top: 16px;">@TempData["SuccessMessage"]</p>
+  }
+  @if (TempData["ErrorMessage"] != null)
+  {
+    <p style="color: red; margin-top: 16px;">@TempData["ErrorMessage"]</p>
+  }
+</div>
+

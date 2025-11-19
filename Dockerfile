@@ -6,6 +6,12 @@ RUN apt-get update -qq && \
     apt-get install -y postgresql-client && \
     rm -rf /var/lib/apt/lists/*
 
+# Install Entity Framework Core tools
+RUN dotnet tool install --global dotnet-ef --version 8.0.0
+
+# Add dotnet tools to PATH
+ENV PATH="${PATH}:/root/.dotnet/tools"
+
 # Set working directory
 WORKDIR /app
 
