@@ -1,0 +1,1387 @@
+{
+  "Challenge.Web.dll": {
+    "/app/src/Challenge.Web/Services/CnabImporter.cs": {
+      "Challenge.Services.CnabImporter": {
+        "System.Void Challenge.Services.CnabImporter::.ctor(Challenge.Data.ApplicationDbContext,Microsoft.Extensions.Logging.ILogger`1<Challenge.Services.CnabImporter>)": {
+          "Lines": {
+            "21": 38,
+            "22": 38,
+            "23": 38,
+            "24": 38,
+            "25": 38
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Services/CnabParser.cs": {
+      "Challenge.Services.CnabParser": {
+        "Challenge.Services.ParseResult Challenge.Services.CnabParser::Parse(System.IO.Stream)": {
+          "Lines": {
+            "67": 61,
+            "68": 61,
+            "69": 61,
+            "70": 58
+          },
+          "Branches": []
+        },
+        "Challenge.Services.ParseResult Challenge.Services.CnabParser::ParseFile(System.IO.Stream)": {
+          "Lines": {
+            "73": 61,
+            "74": 61,
+            "75": 61,
+            "77": 61,
+            "79": 58,
+            "81": 153,
+            "82": 95,
+            "83": 95,
+            "84": 95,
+            "86": 95,
+            "87": 3,
+            "90": 92,
+            "91": 92,
+            "92": 69,
+            "94": 69,
+            "95": 39,
+            "96": 39,
+            "97": 39,
+            "98": 39,
+            "99": 39,
+            "100": 39,
+            "101": 39,
+            "102": 39,
+            "104": 69,
+            "105": 69,
+            "106": 69,
+            "107": 69,
+            "108": 69,
+            "109": 69,
+            "110": 69,
+            "111": 69,
+            "112": 69,
+            "113": 69,
+            "114": 69,
+            "115": 23,
+            "116": 23,
+            "117": 23,
+            "118": 23,
+            "119": 92,
+            "121": 58,
+            "122": 58,
+            "123": 58,
+            "124": 58,
+            "125": 58,
+            "126": 58
+          },
+          "Branches": [
+            {
+              "Line": 81,
+              "Offset": 373,
+              "EndOffset": 28,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 95
+            },
+            {
+              "Line": 86,
+              "Offset": 52,
+              "EndOffset": 59,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 92
+            },
+            {
+              "Line": 94,
+              "Offset": 94,
+              "EndOffset": 96,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 39
+            },
+            {
+              "Line": 94,
+              "Offset": 94,
+              "EndOffset": 152,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 69
+            },
+            {
+              "Line": 86,
+              "Offset": 52,
+              "EndOffset": 358,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 153
+            },
+            {
+              "Line": 81,
+              "Offset": 373,
+              "EndOffset": 378,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 58
+            }
+          ]
+        },
+        "Challenge.Services.TransactionLineData Challenge.Services.CnabParser::ParseLine(System.String)": {
+          "Lines": {
+            "129": 92,
+            "130": 92,
+            "132": 92,
+            "133": 1,
+            "134": 1,
+            "138": 91,
+            "140": 91,
+            "141": 91,
+            "142": 91,
+            "143": 91,
+            "144": 91,
+            "147": 91,
+            "148": 91,
+            "153": 91,
+            "154": 3,
+            "155": 3,
+            "156": 3,
+            "157": 3,
+            "159": 88,
+            "160": 88,
+            "161": 88,
+            "162": 88,
+            "164": 91,
+            "165": 9,
+            "166": 9,
+            "170": 82,
+            "171": 4,
+            "172": 4,
+            "176": 78,
+            "177": 3,
+            "178": 3,
+            "180": 75,
+            "183": 75,
+            "184": 0,
+            "185": 0,
+            "188": 75,
+            "189": 75,
+            "190": 75,
+            "191": 3,
+            "192": 3,
+            "196": 72,
+            "197": 1,
+            "198": 1,
+            "200": 71,
+            "201": 1,
+            "202": 1,
+            "204": 70,
+            "205": 1,
+            "206": 1,
+            "209": 69,
+            "211": 69,
+            "213": 69,
+            "214": 69,
+            "215": 69,
+            "216": 69,
+            "217": 69,
+            "218": 69,
+            "219": 69,
+            "220": 69,
+            "221": 69,
+            "222": 69,
+            "223": 69,
+            "224": 69,
+            "225": 69
+          },
+          "Branches": [
+            {
+              "Line": 132,
+              "Offset": 23,
+              "EndOffset": 25,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 132,
+              "Offset": 23,
+              "EndOffset": 112,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 91
+            },
+            {
+              "Line": 138,
+              "Offset": 135,
+              "EndOffset": 137,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 138,
+              "Offset": 135,
+              "EndOffset": 140,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 90
+            },
+            {
+              "Line": 142,
+              "Offset": 173,
+              "EndOffset": 175,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 142,
+              "Offset": 173,
+              "EndOffset": 179,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 91
+            },
+            {
+              "Line": 142,
+              "Offset": 185,
+              "EndOffset": 187,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 142,
+              "Offset": 185,
+              "EndOffset": 193,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 91
+            },
+            {
+              "Line": 143,
+              "Offset": 206,
+              "EndOffset": 208,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 143,
+              "Offset": 206,
+              "EndOffset": 212,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 91
+            },
+            {
+              "Line": 143,
+              "Offset": 218,
+              "EndOffset": 220,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 143,
+              "Offset": 218,
+              "EndOffset": 226,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 91
+            },
+            {
+              "Line": 153,
+              "Offset": 281,
+              "EndOffset": 283,
+              "Path": 0,
+              "Ordinal": 12,
+              "Hits": 3
+            },
+            {
+              "Line": 155,
+              "Offset": 301,
+              "EndOffset": 303,
+              "Path": 0,
+              "Ordinal": 14,
+              "Hits": 0
+            },
+            {
+              "Line": 155,
+              "Offset": 301,
+              "EndOffset": 307,
+              "Path": 1,
+              "Ordinal": 15,
+              "Hits": 3
+            },
+            {
+              "Line": 155,
+              "Offset": 313,
+              "EndOffset": 315,
+              "Path": 0,
+              "Ordinal": 16,
+              "Hits": 0
+            },
+            {
+              "Line": 155,
+              "Offset": 313,
+              "EndOffset": 321,
+              "Path": 1,
+              "Ordinal": 17,
+              "Hits": 3
+            },
+            {
+              "Line": 153,
+              "Offset": 281,
+              "EndOffset": 333,
+              "Path": 1,
+              "Ordinal": 13,
+              "Hits": 88
+            },
+            {
+              "Line": 160,
+              "Offset": 345,
+              "EndOffset": 347,
+              "Path": 0,
+              "Ordinal": 18,
+              "Hits": 0
+            },
+            {
+              "Line": 160,
+              "Offset": 345,
+              "EndOffset": 351,
+              "Path": 1,
+              "Ordinal": 19,
+              "Hits": 88
+            },
+            {
+              "Line": 160,
+              "Offset": 357,
+              "EndOffset": 359,
+              "Path": 0,
+              "Ordinal": 20,
+              "Hits": 0
+            },
+            {
+              "Line": 160,
+              "Offset": 357,
+              "EndOffset": 365,
+              "Path": 1,
+              "Ordinal": 21,
+              "Hits": 88
+            },
+            {
+              "Line": 161,
+              "Offset": 378,
+              "EndOffset": 380,
+              "Path": 0,
+              "Ordinal": 22,
+              "Hits": 0
+            },
+            {
+              "Line": 161,
+              "Offset": 378,
+              "EndOffset": 384,
+              "Path": 1,
+              "Ordinal": 23,
+              "Hits": 88
+            },
+            {
+              "Line": 161,
+              "Offset": 390,
+              "EndOffset": 392,
+              "Path": 0,
+              "Ordinal": 24,
+              "Hits": 0
+            },
+            {
+              "Line": 161,
+              "Offset": 390,
+              "EndOffset": 398,
+              "Path": 1,
+              "Ordinal": 25,
+              "Hits": 88
+            },
+            {
+              "Line": 164,
+              "Offset": 419,
+              "EndOffset": 421,
+              "Path": 0,
+              "Ordinal": 26,
+              "Hits": 9
+            },
+            {
+              "Line": 164,
+              "Offset": 419,
+              "EndOffset": 467,
+              "Path": 1,
+              "Ordinal": 27,
+              "Hits": 82
+            },
+            {
+              "Line": 170,
+              "Offset": 489,
+              "EndOffset": 491,
+              "Path": 0,
+              "Ordinal": 28,
+              "Hits": 4
+            },
+            {
+              "Line": 170,
+              "Offset": 489,
+              "EndOffset": 509,
+              "Path": 1,
+              "Ordinal": 29,
+              "Hits": 78
+            },
+            {
+              "Line": 176,
+              "Offset": 524,
+              "EndOffset": 526,
+              "Path": 0,
+              "Ordinal": 30,
+              "Hits": 3
+            },
+            {
+              "Line": 176,
+              "Offset": 524,
+              "EndOffset": 544,
+              "Path": 1,
+              "Ordinal": 31,
+              "Hits": 75
+            },
+            {
+              "Line": 183,
+              "Offset": 562,
+              "EndOffset": 564,
+              "Path": 0,
+              "Ordinal": 32,
+              "Hits": 75
+            },
+            {
+              "Line": 183,
+              "Offset": 562,
+              "EndOffset": 576,
+              "Path": 1,
+              "Ordinal": 33,
+              "Hits": 0
+            },
+            {
+              "Line": 183,
+              "Offset": 581,
+              "EndOffset": 583,
+              "Path": 0,
+              "Ordinal": 34,
+              "Hits": 0
+            },
+            {
+              "Line": 183,
+              "Offset": 581,
+              "EndOffset": 602,
+              "Path": 1,
+              "Ordinal": 35,
+              "Hits": 75
+            },
+            {
+              "Line": 188,
+              "Offset": 618,
+              "EndOffset": 620,
+              "Path": 0,
+              "Ordinal": 36,
+              "Hits": 73
+            },
+            {
+              "Line": 188,
+              "Offset": 636,
+              "EndOffset": 638,
+              "Path": 0,
+              "Ordinal": 38,
+              "Hits": 73
+            },
+            {
+              "Line": 188,
+              "Offset": 618,
+              "EndOffset": 659,
+              "Path": 1,
+              "Ordinal": 37,
+              "Hits": 2
+            },
+            {
+              "Line": 188,
+              "Offset": 636,
+              "EndOffset": 659,
+              "Path": 1,
+              "Ordinal": 39,
+              "Hits": 2
+            },
+            {
+              "Line": 188,
+              "Offset": 664,
+              "EndOffset": 666,
+              "Path": 0,
+              "Ordinal": 40,
+              "Hits": 3
+            },
+            {
+              "Line": 188,
+              "Offset": 664,
+              "EndOffset": 685,
+              "Path": 1,
+              "Ordinal": 41,
+              "Hits": 72
+            },
+            {
+              "Line": 196,
+              "Offset": 688,
+              "EndOffset": 690,
+              "Path": 0,
+              "Ordinal": 42,
+              "Hits": 72
+            },
+            {
+              "Line": 196,
+              "Offset": 688,
+              "EndOffset": 698,
+              "Path": 1,
+              "Ordinal": 43,
+              "Hits": 0
+            },
+            {
+              "Line": 196,
+              "Offset": 703,
+              "EndOffset": 708,
+              "Path": 0,
+              "Ordinal": 44,
+              "Hits": 1
+            },
+            {
+              "Line": 196,
+              "Offset": 703,
+              "EndOffset": 836,
+              "Path": 1,
+              "Ordinal": 45,
+              "Hits": 71
+            },
+            {
+              "Line": 200,
+              "Offset": 839,
+              "EndOffset": 841,
+              "Path": 0,
+              "Ordinal": 46,
+              "Hits": 71
+            },
+            {
+              "Line": 200,
+              "Offset": 839,
+              "EndOffset": 849,
+              "Path": 1,
+              "Ordinal": 47,
+              "Hits": 0
+            },
+            {
+              "Line": 200,
+              "Offset": 854,
+              "EndOffset": 859,
+              "Path": 0,
+              "Ordinal": 48,
+              "Hits": 1
+            },
+            {
+              "Line": 200,
+              "Offset": 854,
+              "EndOffset": 987,
+              "Path": 1,
+              "Ordinal": 49,
+              "Hits": 70
+            },
+            {
+              "Line": 204,
+              "Offset": 990,
+              "EndOffset": 992,
+              "Path": 0,
+              "Ordinal": 50,
+              "Hits": 70
+            },
+            {
+              "Line": 204,
+              "Offset": 990,
+              "EndOffset": 1000,
+              "Path": 1,
+              "Ordinal": 51,
+              "Hits": 0
+            },
+            {
+              "Line": 204,
+              "Offset": 1005,
+              "EndOffset": 1010,
+              "Path": 0,
+              "Ordinal": 52,
+              "Hits": 1
+            },
+            {
+              "Line": 204,
+              "Offset": 1005,
+              "EndOffset": 1138,
+              "Path": 1,
+              "Ordinal": 53,
+              "Hits": 69
+            }
+          ]
+        },
+        "System.String Challenge.Services.CnabParser::SafeSlice(System.String,System.Int32,System.Int32)": {
+          "Lines": {
+            "228": 634,
+            "229": 634,
+            "230": 0,
+            "231": 634,
+            "232": 1,
+            "233": 633,
+            "234": 0,
+            "236": 633,
+            "237": 633,
+            "238": 633,
+            "239": 0,
+            "240": 633,
+            "241": 634
+          },
+          "Branches": [
+            {
+              "Line": 229,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 229,
+              "Offset": 9,
+              "EndOffset": 19,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 634
+            },
+            {
+              "Line": 231,
+              "Offset": 21,
+              "EndOffset": 23,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 634
+            },
+            {
+              "Line": 231,
+              "Offset": 21,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 231,
+              "Offset": 40,
+              "EndOffset": 42,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 1
+            },
+            {
+              "Line": 231,
+              "Offset": 40,
+              "EndOffset": 50,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 633
+            },
+            {
+              "Line": 233,
+              "Offset": 58,
+              "EndOffset": 60,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 233,
+              "Offset": 58,
+              "EndOffset": 68,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 633
+            },
+            {
+              "Line": 238,
+              "Offset": 101,
+              "EndOffset": 103,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 238,
+              "Offset": 101,
+              "EndOffset": 111,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 633
+            }
+          ]
+        }
+      },
+      "Challenge.Services.CnabParser/ParseError": {
+        "System.Void Challenge.Services.CnabParser/ParseError::.ctor(System.String)": {
+          "Lines": {
+            "58": 69
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Models/ErrorViewModel.cs": {
+      "Challenge.Models.ErrorViewModel": {
+        "System.Boolean Challenge.Models.ErrorViewModel::get_ShowRequestId()": {
+          "Lines": {
+            "16": 3
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Models/Store.cs": {
+      "Challenge.Models.Store": {
+        "System.Decimal Challenge.Models.Store::get_Balance()": {
+          "Lines": {
+            "51": 6,
+            "52": 6,
+            "53": 6
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Models/Transaction.cs": {
+      "Challenge.Models.Transaction": {
+        "System.Boolean Challenge.Models.Transaction::get_IsEntrada()": {
+          "Lines": {
+            "109": 56
+          },
+          "Branches": [
+            {
+              "Line": 109,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 56
+            },
+            {
+              "Line": 109,
+              "Offset": 16,
+              "EndOffset": 51,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Boolean Challenge.Models.Transaction::get_IsSaida()": {
+          "Lines": {
+            "114": 20
+          },
+          "Branches": []
+        },
+        "System.String Challenge.Models.Transaction::get_TypeDescription()": {
+          "Lines": {
+            "119": 10
+          },
+          "Branches": [
+            {
+              "Line": 119,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 119,
+              "Offset": 16,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 9
+            }
+          ]
+        },
+        "System.String Challenge.Models.Transaction::get_Signal()": {
+          "Lines": {
+            "124": 10
+          },
+          "Branches": [
+            {
+              "Line": 124,
+              "Offset": 16,
+              "EndOffset": 18,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 124,
+              "Offset": 16,
+              "EndOffset": 25,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 9
+            }
+          ]
+        },
+        "System.Void Challenge.Models.Transaction::.cctor()": {
+          "Lines": {
+            "93": 1,
+            "94": 1,
+            "95": 1,
+            "96": 1,
+            "97": 1,
+            "98": 1,
+            "99": 1,
+            "100": 1,
+            "101": 1,
+            "102": 1,
+            "103": 1,
+            "104": 1
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Migrations/20251119053026_AddUniqueConstraintToStoreName.cs": {
+      "Challenge.Migrations.AddUniqueConstraintToStoreName": {
+        "System.Void Challenge.Migrations.AddUniqueConstraintToStoreName::Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        },
+        "System.Void Challenge.Migrations.AddUniqueConstraintToStoreName::Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)": {
+          "Lines": {
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Migrations/20251119053026_AddUniqueConstraintToStoreName.Designer.cs": {
+      "Challenge.Migrations.AddUniqueConstraintToStoreName": {
+        "System.Void Challenge.Migrations.AddUniqueConstraintToStoreName::BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "20": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "26": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "129": 0,
+            "130": 0,
+            "132": 0,
+            "133": 0,
+            "134": 0,
+            "135": 0,
+            "137": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Migrations/ApplicationDbContextModelSnapshot.cs": {
+      "Challenge.Migrations.ApplicationDbContextModelSnapshot": {
+        "System.Void Challenge.Migrations.ApplicationDbContextModelSnapshot::BuildModel(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "17": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "23": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "63": 0,
+            "64": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0,
+            "118": 0,
+            "119": 0,
+            "120": 0,
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "129": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "134": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Data/ApplicationDbContext.cs": {
+      "Challenge.Data.ApplicationDbContext": {
+        "System.Void Challenge.Data.ApplicationDbContext::OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)": {
+          "Lines": {
+            "32": 3,
+            "33": 3,
+            "35": 3,
+            "36": 3,
+            "37": 3,
+            "38": 3,
+            "39": 3,
+            "40": 3,
+            "41": 3,
+            "43": 3,
+            "44": 3,
+            "45": 3,
+            "46": 3,
+            "47": 3,
+            "48": 3,
+            "49": 3,
+            "50": 3,
+            "51": 3,
+            "52": 3,
+            "53": 3,
+            "54": 3,
+            "55": 3,
+            "56": 3,
+            "57": 3,
+            "58": 3,
+            "59": 3,
+            "60": 3,
+            "61": 3,
+            "62": 3,
+            "63": 3,
+            "64": 3,
+            "65": 3,
+            "66": 3,
+            "67": 3,
+            "68": 3,
+            "69": 3,
+            "70": 3,
+            "71": 3,
+            "72": 3,
+            "73": 3,
+            "74": 3,
+            "75": 3
+          },
+          "Branches": []
+        },
+        "System.Void Challenge.Data.ApplicationDbContext::.ctor(Microsoft.EntityFrameworkCore.DbContextOptions`1<Challenge.Data.ApplicationDbContext>)": {
+          "Lines": {
+            "17": 52,
+            "18": 52,
+            "19": 52
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Controllers/CnabFilesController.cs": {
+      "Challenge.Controllers.CnabFilesController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult Challenge.Controllers.CnabFilesController::New()": {
+          "Lines": {
+            "30": 1,
+            "31": 1,
+            "32": 1
+          },
+          "Branches": []
+        },
+        "System.Void Challenge.Controllers.CnabFilesController::.ctor(Challenge.Services.CnabImporter,Microsoft.Extensions.Logging.ILogger`1<Challenge.Controllers.CnabFilesController>)": {
+          "Lines": {
+            "19": 16,
+            "20": 16,
+            "21": 16,
+            "22": 16,
+            "23": 16
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Controllers/ConfigurationController.cs": {
+      "Challenge.Controllers.ConfigurationController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult Challenge.Controllers.ConfigurationController::Index()": {
+          "Lines": {
+            "34": 1,
+            "35": 1,
+            "36": 1
+          },
+          "Branches": []
+        },
+        "System.Boolean Challenge.Controllers.ConfigurationController::IsValidSequenceName(System.String)": {
+          "Lines": {
+            "129": 0,
+            "130": 0,
+            "131": 0,
+            "138": 0,
+            "139": 0,
+            "140": 0,
+            "141": 0,
+            "142": 0,
+            "143": 0
+          },
+          "Branches": [
+            {
+              "Line": 130,
+              "Offset": 9,
+              "EndOffset": 11,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 130,
+              "Offset": 9,
+              "EndOffset": 15,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 139,
+              "Offset": 33,
+              "EndOffset": 35,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 139,
+              "Offset": 43,
+              "EndOffset": 45,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 139,
+              "Offset": 56,
+              "EndOffset": 58,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 139,
+              "Offset": 33,
+              "EndOffset": 74,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 139,
+              "Offset": 43,
+              "EndOffset": 74,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 139,
+              "Offset": 56,
+              "EndOffset": 74,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void Challenge.Controllers.ConfigurationController::.ctor(Challenge.Data.ApplicationDbContext,Microsoft.Extensions.Logging.ILogger`1<Challenge.Controllers.ConfigurationController>)": {
+          "Lines": {
+            "23": 6,
+            "24": 6,
+            "25": 6,
+            "26": 6,
+            "27": 6
+          },
+          "Branches": []
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Controllers/HomeController.cs": {
+      "Challenge.Controllers.HomeController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult Challenge.Controllers.HomeController::Index()": {
+          "Lines": {
+            "17": 1,
+            "18": 1,
+            "19": 1
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult Challenge.Controllers.HomeController::Privacy()": {
+          "Lines": {
+            "26": 1,
+            "27": 1,
+            "28": 1
+          },
+          "Branches": []
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult Challenge.Controllers.HomeController::Error()": {
+          "Lines": {
+            "36": 1,
+            "37": 1,
+            "38": 1
+          },
+          "Branches": [
+            {
+              "Line": 37,
+              "Offset": 14,
+              "EndOffset": 16,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 37,
+              "Offset": 14,
+              "EndOffset": 20,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 37,
+              "Offset": 26,
+              "EndOffset": 28,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 37,
+              "Offset": 26,
+              "EndOffset": 40,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 1
+            }
+          ]
+        }
+      }
+    },
+    "/app/src/Challenge.Web/Controllers/StoresController.cs": {
+      "Challenge.Controllers.StoresController": {
+        "System.Void Challenge.Controllers.StoresController::.ctor(Challenge.Data.ApplicationDbContext,Microsoft.Extensions.Logging.ILogger`1<Challenge.Controllers.StoresController>)": {
+          "Lines": {
+            "20": 4,
+            "21": 4,
+            "22": 4,
+            "23": 4,
+            "24": 4
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

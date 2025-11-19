@@ -48,7 +48,8 @@ namespace Challenge.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name");
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Stores");
                 });

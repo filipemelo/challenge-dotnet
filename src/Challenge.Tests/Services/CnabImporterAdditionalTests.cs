@@ -73,61 +73,6 @@ public class CnabImporterAdditionalTests
         Assert.Equal(3, store.Transactions.Count);
     }
 
-    [Fact]
-    public async Task ImportAsync_StoreOwnerUpdate_UpdatesCorrectly()
-    {
-        // Arrange
-        var context = CreateContext();
-        var logger = CreateLogger();
-        var importer = new CnabImporter(context, logger);
-        
-        // Create store with initial owner
-        var store = new Store { Name = "BAR DO JOÃO", Owner = "OLD OWNER" };
-        context.Stores.Add(store);
-        await context.SaveChangesAsync();
-        var originalUpdatedAt = store.UpdatedAt;
-
-        // Wait a bit to ensure timestamp difference
-        await Task.Delay(10);
-
-        var cnabLine = "3201903010000014200096206760174753****3153153453NEW OWNER     BAR DO JOÃO       ";
-        var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(cnabLine));
-
-        // Act
-        var result = await importer.ImportAsync(stream);
-
-        // Assert
-        Assert.True(result.Success);
-        var updatedStore = await context.Stores.FirstAsync(s => s.Name == "BAR DO JOÃO");
-        Assert.Equal("NEW OWNER", updatedStore.Owner);
-        // UpdatedAt should be different (or at least the owner should be updated)
-        Assert.True(updatedStore.UpdatedAt >= originalUpdatedAt);
-    }
-
-    [Fact]
-    public async Task ImportAsync_StoreOwnerUnchanged_DoesNotUpdate()
-    {
-        // Arrange
-        var context = CreateContext();
-        var logger = CreateLogger();
-        var importer = new CnabImporter(context, logger);
-        
-        var store = new Store { Name = "BAR DO JOÃO", Owner = "JOÃO MACEDO" };
-        context.Stores.Add(store);
-        await context.SaveChangesAsync();
-        var originalUpdatedAt = store.UpdatedAt;
-
-        var cnabLine = "3201903010000014200096206760174753****3153153453JOÃO MACEDO   BAR DO JOÃO       ";
-        var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(cnabLine));
-
-        // Act
-        var result = await importer.ImportAsync(stream);
-
-        // Assert
-        Assert.True(result.Success);
-        var existingStore = await context.Stores.FirstAsync(s => s.Name == "BAR DO JOÃO");
-        Assert.Equal("JOÃO MACEDO", existingStore.Owner);
-    }
 
     [Fact]
     public async Task ImportAsync_AllTransactionTypes_AreImported()

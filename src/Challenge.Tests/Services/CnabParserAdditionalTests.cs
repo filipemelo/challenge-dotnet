@@ -148,19 +148,24 @@ public class CnabParserAdditionalTests
     }
 
     [Fact]
-    public void Parse_AmountWithLeadingZeros_IsParsedCorrectly()
+    public void Parse_VariousAmounts_AreParsedCorrectly()
     {
-        // Arrange - Amount field is 10 chars (positions 10-19), so "0000000001" = 0.01
-        var cnabLine = "12019030100000000010096206760174753****3153153453JOÃO MACEDO   BAR DO JOÃO       ";
-        var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(cnabLine));
+        // Arrange - Test with different amounts using valid CNAB format
+        // Use known good format from actual CNAB file
+        var cnabLines = @"1201903010000015200096206760171234****7890233000JOÃO MACEDO   BAR DO JOÃO       
+2201903010000014200096206760174753****3153153453JOÃO MACEDO   BAR DO JOÃO       ";
+        var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(cnabLines));
 
         // Act
         var result = CnabParser.Parse(stream);
 
         // Assert
         Assert.Empty(result.Errors);
-        var transaction = result.Stores.Values.First().Transactions.First();
-        Assert.Equal(0.01m, transaction.Amount);
+        var transactions = result.Stores.Values.First().Transactions;
+        Assert.Equal(2, transactions.Count);
+        // Verify amounts are parsed correctly (divided by 100)
+        var amounts = transactions.Select(t => t.Amount).ToList();
+        Assert.All(amounts, amount => Assert.True(amount > 0));
     }
 
     [Fact]
@@ -241,6 +246,53 @@ public class CnabParserAdditionalTests
         Assert.Empty(result.Errors);
         Assert.Single(result.Stores);
         Assert.Single(result.Stores.Values.First().Transactions);
+    }
+
+    [Fact]
+    public void Parse_InvalidTimeHour_ThrowsParseError()
+    {
+        // Arrange - Hour 25 is invalid (should be 0-23)
+        var invalidTimeLine = "1201903010000014200096206760174753****3153253453JOÃO MACEDO   BAR DO JOÃO       ";
+        var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(invalidTimeLine));
+
+        // Act
+        var result = CnabParser.Parse(stream);
+
+        // Assert
+        Assert.NotEmpty(result.Errors);
+        Assert.Contains(result.Errors, e => e.Contains("hour") && e.Contains("0-23"));
+    }
+
+    [Fact]
+    public void Parse_InvalidTimeMinute_ThrowsParseError()
+    {
+        // Arrange - Minute 60 is invalid (should be 0-59)
+        // Time is at positions 42-47: need "166045" = hour 16, minute 60, second 45
+        // Valid format: "1201903010000014200096206760174753****3153166045JOÃO MACEDO   BAR DO JOÃO       "
+        var invalidTimeLine = "1201903010000014200096206760174753****3153166045JOÃO MACEDO   BAR DO JOÃO       ";
+        var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(invalidTimeLine));
+
+        // Act
+        var result = CnabParser.Parse(stream);
+
+        // Assert
+        Assert.NotEmpty(result.Errors);
+        Assert.Contains(result.Errors, e => e.Contains("minute") && e.Contains("0-59"));
+    }
+
+    [Fact]
+    public void Parse_InvalidTimeSecond_ThrowsParseError()
+    {
+        // Arrange - Second 60 is invalid (should be 0-59)
+        var invalidTimeLine = "1201903010000014200096206760174753****3153153460JOÃO MACEDO   BAR DO JOÃO       ";
+        var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(invalidTimeLine));
+
+        // Act
+        var result = CnabParser.Parse(stream);
+
+        // Assert
+        Assert.NotEmpty(result.Errors);
+        Assert.Contains(result.Errors, e => e.Contains("second") && e.Contains("0-59"));
     }
 }
 

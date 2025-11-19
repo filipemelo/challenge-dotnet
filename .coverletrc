@@ -1,0 +1,22 @@
+{
+  "exclude": [
+    "[*.Tests]*",
+    "[*.Test]*",
+    "*Program.cs",
+    "*Migrations/**",
+    "**/Migrations/*.cs",
+    "**/Migrations/*.Designer.cs",
+    "*ApplicationDbContextModelSnapshot.cs",
+    "*InitialCreate.cs",
+    "*Views/**",
+    "*_ViewImports.cshtml",
+    "*_ViewStart.cshtml",
+    "*.cshtml"
+  ],
+  "excludeByAttribute": [
+    "Obsolete",
+    "GeneratedCodeAttribute",
+    "CompilerGeneratedAttribute"
+  ]
+}
+

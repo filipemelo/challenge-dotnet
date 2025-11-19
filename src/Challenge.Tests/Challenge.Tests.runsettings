@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat Code Coverage">
+        <Configuration>
+          <Format>cobertura,json</Format>
+          <Exclude>[*.Tests]*,[*.Test]*,*Program.cs,*Migrations/**,*Views/**,*_ViewImports.cshtml,*_ViewStart.cshtml,*.cshtml,**/Program.cs,**/Migrations/**,**/Views/**,*ApplicationDbContextModelSnapshot.cs,*InitialCreate.cs,**/Migrations/*.cs,**/Migrations/*.Designer.cs</Exclude>
+          <ExcludeByAttribute>Obsolete,GeneratedCodeAttribute,CompilerGeneratedAttribute</ExcludeByAttribute>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>
+

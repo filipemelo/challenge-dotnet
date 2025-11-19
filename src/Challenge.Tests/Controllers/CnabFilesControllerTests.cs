@@ -167,22 +167,22 @@ public class CnabFilesControllerTests
     [Fact]
     public async Task Create_ExceptionThrown_ReturnsViewWithError()
     {
-        // Arrange
+        // Arrange - Use a stream that will cause an exception when reading
         var context = CreateContext();
         var logger = new Mock<ILogger<CnabFilesController>>().Object;
-        var importer = new Mock<CnabImporter>(context, logger);
-        importer.Setup(i => i.ImportAsync(It.IsAny<Stream>()))
-            .ThrowsAsync(new Exception("Test exception"));
+        var importerLogger = new Mock<ILogger<CnabImporter>>().Object;
+        var importer = new CnabImporter(context, importerLogger);
         
-        var controller = new CnabFilesController(importer.Object, logger);
+        var controller = new CnabFilesController(importer, logger);
         var httpContext = new DefaultHttpContext();
         var tempDataProvider = new Mock<ITempDataProvider>();
         controller.TempData = new TempDataDictionary(httpContext, tempDataProvider.Object);
         
+        // Create a file mock that throws when OpenReadStream is called
         var file = new Mock<IFormFile>();
         file.Setup(f => f.Length).Returns(100);
         file.Setup(f => f.FileName).Returns("test.txt");
-        file.Setup(f => f.OpenReadStream()).Returns(new MemoryStream(new byte[100]));
+        file.Setup(f => f.OpenReadStream()).Throws(new Exception("Stream error"));
 
         // Act
         var result = await controller.Create(file.Object);

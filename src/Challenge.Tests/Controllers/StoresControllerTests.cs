@@ -3,6 +3,8 @@ using Challenge.Data;
 using Challenge.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace Challenge.Tests.Controllers;
 
@@ -16,12 +18,18 @@ public class StoresControllerTests
         return new ApplicationDbContext(options);
     }
 
+    private ILogger<StoresController> CreateLogger()
+    {
+        return new LoggerFactory().CreateLogger<StoresController>();
+    }
+
     [Fact]
     public async Task Index_NoStores_ReturnsEmptyList()
     {
         // Arrange
         var context = CreateContext();
-        var controller = new StoresController(context);
+        var logger = CreateLogger();
+        var controller = new StoresController(context, logger);
 
         // Act
         var result = await controller.Index();
@@ -42,7 +50,8 @@ public class StoresControllerTests
         context.Stores.Add(store1);
         context.Stores.Add(store2);
         await context.SaveChangesAsync();
-        var controller = new StoresController(context);
+        var logger = CreateLogger();
+        var controller = new StoresController(context, logger);
 
         // Act
         var result = await controller.Index();
@@ -74,7 +83,8 @@ public class StoresControllerTests
         });
         context.Stores.Add(store);
         await context.SaveChangesAsync();
-        var controller = new StoresController(context);
+        var logger = CreateLogger();
+        var controller = new StoresController(context, logger);
 
         // Act
         var result = await controller.Index();
@@ -84,6 +94,28 @@ public class StoresControllerTests
         var model = Assert.IsAssignableFrom<List<Store>>(viewResult.Model);
         Assert.Single(model);
         Assert.Single(model[0].Transactions);
+    }
+
+    [Fact]
+    public async Task Index_ExceptionThrown_LogsErrorAndReturnsEmptyList()
+    {
+        // Arrange
+        var context = CreateContext();
+        var loggerFactory = new LoggerFactory();
+        var logger = loggerFactory.CreateLogger<StoresController>();
+        var controller = new StoresController(context, logger);
+        
+        // Dispose context to simulate database error
+        await context.DisposeAsync();
+
+        // Act
+        var result = await controller.Index();
+
+        // Assert
+        var viewResult = Assert.IsType<ViewResult>(result);
+        var model = Assert.IsAssignableFrom<List<Store>>(viewResult.Model);
+        Assert.Empty(model);
+        // Note: In a real scenario, we could verify logging was called using a mock logger
     }
 }
 

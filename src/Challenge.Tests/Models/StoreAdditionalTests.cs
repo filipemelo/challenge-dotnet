@@ -37,21 +37,21 @@ public class StoreAdditionalTests
     }
 
     [Fact]
-    public void Balance_WithNullTransactions_ThrowsException()
+    public void Balance_WithEmptyTransactions_ReturnsZero()
     {
         // Arrange
         var store = new Store
         {
             Name = "Test Store",
-            Owner = "Test Owner"
+            Owner = "Test Owner",
+            Transactions = new List<Transaction>()
         };
-        // Use reflection to set Transactions to null to test edge case
-        var transactionsProperty = typeof(Store).GetProperty("Transactions");
-        transactionsProperty?.SetValue(store, null);
 
-        // Act & Assert
-        // This will throw NullReferenceException when accessing Balance
-        Assert.Throws<NullReferenceException>(() => _ = store.Balance);
+        // Act
+        var balance = store.Balance;
+
+        // Assert
+        Assert.Equal(0m, balance);
     }
 
     [Fact]
