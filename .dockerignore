@@ -13,6 +13,8 @@
 /obj/
 /out/
 /publish/
+src/**/bin/
+src/**/obj/
 
 # Ignore Visual Studio files
 /.vs/

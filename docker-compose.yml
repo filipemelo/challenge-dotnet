@@ -10,7 +10,7 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=challenge_dev;Username=postgres;Password=postgres
-    command: dotnet watch run --project Challenge.csproj --urls http://0.0.0.0:5000
+    command: dotnet watch run --project src/Challenge.Web/Challenge.Web.csproj --urls http://0.0.0.0:5000
 
   db:
     image: postgres:15

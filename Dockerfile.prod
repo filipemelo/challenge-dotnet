@@ -6,12 +6,12 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy project files and restore dependencies
-COPY Challenge.csproj ./
-RUN dotnet restore
+COPY src/Challenge.Web/Challenge.Web.csproj src/Challenge.Web/
+RUN dotnet restore src/Challenge.Web/Challenge.Web.csproj
 
 # Copy everything else and build
-COPY . ./
-RUN dotnet publish Challenge.csproj -c Release -o /app/publish
+COPY src/Challenge.Web/ src/Challenge.Web/
+RUN dotnet publish src/Challenge.Web/Challenge.Web.csproj -c Release -o /app/publish
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
@@ -36,5 +36,5 @@ ENV ASPNETCORE_ENVIRONMENT=Production \
 
 EXPOSE 80
 
-ENTRYPOINT ["dotnet", "Challenge.dll"]
+ENTRYPOINT ["dotnet", "Challenge.Web.dll"]
 

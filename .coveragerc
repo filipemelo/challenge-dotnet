@@ -1,0 +1,22 @@
+# Coverage configuration for Coverlet
+[run]
+# Exclude test projects
+exclude = [*.Tests]*
+exclude = [*.Test]*
+
+# Exclude by attributes
+exclude_by_attribute = Obsolete
+exclude_by_attribute = GeneratedCodeAttribute
+exclude_by_attribute = CompilerGeneratedAttribute
+
+# Exclude specific files/patterns
+exclude_files = 
+    *Program.cs
+    *Migrations/*
+    *ApplicationDbContextModelSnapshot.cs
+    *_ViewImports.cshtml
+    *_ViewStart.cshtml
+
+# Include only source files
+include = ../Challenge.Web/**/*.cs
+

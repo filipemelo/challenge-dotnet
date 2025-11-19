@@ -8,9 +8,8 @@ Web application to import CNAB files, normalize and display financial transactio
 
 ## Requirements
 
-- .NET 8 SDK (or use Docker)
-- PostgreSQL
 - Docker and Docker Compose (recommended)
+- PostgreSQL (included in Docker Compose)
 
 ---
 
@@ -24,13 +23,10 @@ docker-compose build
 docker-compose up -d
 
 # Wait a few seconds for the database to be ready, then create and migrate the database
-# (This step is only needed if you have Entity Framework migrations set up)
-docker-compose exec web dotnet ef database update --project Challenge.csproj
+docker-compose exec web dotnet ef database update --project src/Challenge.Web/Challenge.Web.csproj
 ```
 
-Access: [http://localhost:5001](http://localhost:5001)
-
-**Note:** Port 5001 is used instead of 5000 to avoid conflicts with macOS AirPlay Receiver.
+Access: [http://localhost:5000](http://localhost:5000)
 
 **Note:** If you see "service 'web' is not running", make sure you've run `docker-compose up -d` first. You can check the status with `docker-compose ps`.
 
@@ -70,18 +66,17 @@ docker-compose exec web bash
 # Run .NET CLI commands
 docker-compose exec web dotnet --version
 docker-compose exec web dotnet restore
-docker-compose exec web dotnet build
-docker-compose exec web dotnet test
+docker-compose exec web dotnet build src/Challenge.Web/Challenge.Web.csproj
 ```
 
 ### Database operations
 
 ```sh
 # Run Entity Framework migrations
-docker-compose exec web dotnet ef database update --project Challenge.csproj
+docker-compose exec web dotnet ef database update --project src/Challenge.Web/Challenge.Web.csproj
 
 # Create a new migration
-docker-compose exec web dotnet ef migrations add MigrationName --project Challenge.csproj
+docker-compose exec web dotnet ef migrations add MigrationName --project src/Challenge.Web/Challenge.Web.csproj
 
 # Access PostgreSQL directly
 docker-compose exec db psql -U postgres -d challenge_dev
@@ -99,15 +94,92 @@ docker-compose exec db psql -U postgres -d challenge_dev
 
 ## Tests
 
-- **Run tests:**
-  ```sh
-  docker-compose exec web dotnet test
-  ```
+All tests are run inside Docker containers.
 
-- **Run tests with coverage:**
-  ```sh
-  docker-compose exec web dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-  ```
+### Run all tests
+
+```sh
+docker-compose exec web dotnet test src/Challenge.Tests/Challenge.Tests.csproj
+```
+
+### Run tests with verbose output
+
+```sh
+docker-compose exec web dotnet test src/Challenge.Tests/Challenge.Tests.csproj --verbosity normal
+```
+
+### Run tests with coverage
+
+```sh
+# Basic coverage using XPlat Code Coverage collector (recommended)
+docker-compose exec web dotnet test src/Challenge.Tests/Challenge.Tests.csproj --collect:"XPlat Code Coverage"
+
+# Coverage with MSBuild properties (alternative)
+docker-compose exec web dotnet test src/Challenge.Tests/Challenge.Tests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+
+# Coverage with threshold (fails if below threshold)
+docker-compose exec web dotnet test src/Challenge.Tests/Challenge.Tests.csproj \
+  /p:CollectCoverage=true \
+  /p:Threshold=80 \
+  /p:ThresholdType=line \
+  /p:ThresholdStat=total
+```
+
+Coverage reports will be generated in `src/Challenge.Tests/TestResults/{guid}/`:
+- `coverage.cobertura.xml` - Cobertura format (for CI/CD and ReportGenerator)
+- Additional formats can be configured in the test project file
+
+### Generate HTML coverage report
+
+To generate a nice HTML report from the coverage data:
+
+```sh
+# Install ReportGenerator tool (one-time setup)
+docker-compose exec web dotnet tool install --global dotnet-reportgenerator-globaltool
+
+# Run tests with coverage
+docker-compose exec web dotnet test src/Challenge.Tests/Challenge.Tests.csproj --collect:"XPlat Code Coverage"
+
+# Find the latest coverage file and generate HTML report
+docker-compose exec web bash -c "
+  COVERAGE_FILE=\$(find src/Challenge.Tests/TestResults -name 'coverage.cobertura.xml' | head -1) && \
+  reportgenerator \
+    -reports:\"\$COVERAGE_FILE\" \
+    -targetdir:src/Challenge.Tests/TestResults/coverage-report \
+    -reporttypes:Html
+"
+
+# Or do it all in one command
+docker-compose exec web bash -c "
+  dotnet test src/Challenge.Tests/Challenge.Tests.csproj --collect:\"XPlat Code Coverage\" && \
+  COVERAGE_FILE=\$(find src/Challenge.Tests/TestResults -name 'coverage.cobertura.xml' | head -1) && \
+  reportgenerator -reports:\"\$COVERAGE_FILE\" -targetdir:src/Challenge.Tests/TestResults/coverage-report -reporttypes:Html
+"
+```
+
+### View coverage summary
+
+```sh
+# Quick coverage summary from Cobertura XML
+docker-compose exec web bash -c "
+  COVERAGE_FILE=\$(find src/Challenge.Tests/TestResults -name 'coverage.cobertura.xml' | head -1) && \
+  echo \"Line Coverage: \$(grep -oP 'line-rate=\"\K[0-9.]+' \"\$COVERAGE_FILE\" | head -1 | awk '{print \$1*100\"%\"}') && \
+  echo \"Branch Coverage: \$(grep -oP 'branch-rate=\"\K[0-9.]+' \"\$COVERAGE_FILE\" | head -1 | awk '{print \$1*100\"%\"}') \"
+"
+```
+
+### Run specific test class
+
+```sh
+docker-compose exec web dotnet test src/Challenge.Tests/Challenge.Tests.csproj --filter "FullyQualifiedName~CnabParserTests"
+```
+
+### Run tests in watch mode (requires rebuilding container)
+
+```sh
+# Build with test tools
+docker-compose exec web dotnet watch test src/Challenge.Tests/Challenge.Tests.csproj
+```
 
 ---
 
@@ -121,10 +193,25 @@ docker-compose exec db psql -U postgres -d challenge_dev
 
 ## Project Structure
 
-- `Models/` - Main models: Store, Transaction, CnabFile
-- `Services/` - Import logic and CNAB parser
-- `Controllers/` - Controllers for upload, stores and configuration
-- `Tests/` - Automated tests (xUnit)
+```
+challenge-dotnet/
+├── src/
+│   ├── Challenge.Web/          # Main web application
+│   │   ├── Controllers/        # MVC controllers
+│   │   ├── Data/               # Entity Framework DbContext
+│   │   ├── Models/             # Domain models
+│   │   ├── Services/           # Business logic (CNAB parser, importer)
+│   │   ├── Views/              # Razor views
+│   │   ├── wwwroot/            # Static files (CSS, JS)
+│   │   └── Migrations/         # EF Core migrations
+│   └── Challenge.Tests/        # Test project (xUnit)
+│       ├── Models/             # Model tests
+│       └── Services/           # Service tests
+├── Dockerfile                  # Development Docker image
+├── Dockerfile.prod            # Production Docker image
+├── docker-compose.yml         # Docker Compose configuration
+└── README.md                  # This file
+```
 
 ---
 
@@ -132,27 +219,9 @@ docker-compose exec db psql -U postgres -d challenge_dev
 
 - Database reset clears all stores and transactions and restarts IDs.
 - The project uses vanilla CSS (no CSS frameworks).
-- Test coverage target >80%.
-
----
-
-## How to Run Locally (without Docker)
-
-1. Install .NET 8 SDK and PostgreSQL.
-2. Clone the project and configure the connection string in `appsettings.json`:
-   ```json
-   {
-     "ConnectionStrings": {
-       "DefaultConnection": "Host=localhost;Port=5432;Database=challenge_dev;Username=postgres;Password=postgres"
-     }
-   }
-   ```
-3. Run the application:
-   ```sh
-   dotnet restore
-   dotnet ef database update
-   dotnet run
-   ```
+- Test coverage target >80% (current: ~37% - work in progress).
+- All development and testing is done through Docker containers.
+- Coverage reports are generated in `src/Challenge.Tests/TestResults/` directories.
 
 ---
 
@@ -178,10 +247,10 @@ docker run -d \
 
 ### Port already in use
 
-If port 5001 is already in use, change it in `docker-compose.yml`:
+If port 5000 is already in use, change it in `docker-compose.yml`:
 ```yaml
 ports:
-  - "5002:5000"  # Use port 5002 on host
+  - "5001:5000"  # Use port 5001 on host
 ```
 
 ### Database connection issues
@@ -201,5 +270,18 @@ docker-compose down -v
 # Rebuild and start
 docker-compose build
 docker-compose up -d
+
+# Recreate database
+docker-compose exec web dotnet ef database update --project src/Challenge.Web/Challenge.Web.csproj
 ```
 
+### Test failures
+
+If tests fail, ensure the database is properly set up:
+```sh
+# Rebuild test project
+docker-compose exec web dotnet build src/Challenge.Tests/Challenge.Tests.csproj
+
+# Run tests with detailed output
+docker-compose exec web dotnet test src/Challenge.Tests/Challenge.Tests.csproj --verbosity detailed
+```
